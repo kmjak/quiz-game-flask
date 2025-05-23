@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from controller.createQuiz import CreateQuiz
+from controller.CreateQuiz import CreateQuiz
 
 app = Flask(__name__)
 
