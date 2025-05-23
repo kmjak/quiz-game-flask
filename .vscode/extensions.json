@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker",
+    "oderwat.indent-rainbow",
+    "kisstkondoros.vscode-gutter-preview",
+    "zignd.html-css-class-completion",
+    "ms-ceintl.vscode-language-pack-ja",
+    "christian-kohler.path-intellisense",
+    "bradlc.vscode-tailwindcss",
+    "shardulm94.trailing-spaces",
+    "vscode-icons-team.vscode-icons"
+  ]
+}

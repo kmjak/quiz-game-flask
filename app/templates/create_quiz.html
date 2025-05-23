@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  create
+{% endblock %}
+
+{% block page_title %}
+  クイズ作成
+{% endblock %}
+
+{% block content %}
+  <form method="POST" class="flex flex-col space-y-4 mb-3" action="{{ url_for('create_quiz') }}">
+    <div>
+      <label for="question" class="cursor-pointer">問題: </label>
+      <p><input type="text" name="question" id="question" class="outline-none px-2 py-1 border-2 border-black focus:border-blue-500 rounded-md w-52"></p>
+    </div>
+    <div>
+      <label for="answer" class="cursor-pointer">答え: </label>
+      <p><input type="text" name="answer" id="answer" class="outline-none px-2 py-1 border-2 border-black focus:border-blue-500 rounded-md w-52"></p>
+    </div>
+
+    <p><button id="create" class="bg-blue-500 text-white px-4 py-2 rounded-md">作成</button></p>
+  </form>
+  {% block message %}
+    {% if status == "error" %}
+      <p class="text-red-500">登録に失敗しました</p>
+    {% elif status == "success" %}
+      <p class="text-green-500">登録に成功しました</p>
+    {% endif %}
+  {% endblock %}
+
+{% endblock %}
