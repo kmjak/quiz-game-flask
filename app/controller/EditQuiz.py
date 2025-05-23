@@ -23,10 +23,10 @@ class EditQuiz:
     return render_template('edit_quiz.html', status=status, currentMode="edit", datas=datas, message=message, target=target)
 
   def editQuiz():
-    id = request.form['id']
-    question = request.form['question']
-    answer = request.form['answer']
-    mode = request.form['mode']
+    id = request.form.get('id')
+    question = request.form.get('question')
+    answer = request.form.get('answer')
+    mode = request.form.get('mode')
 
     if mode == "read":
       if not id:

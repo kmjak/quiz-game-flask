@@ -9,8 +9,8 @@ class CreateQuiz:
     return render_template('create_quiz.html', status=status, currentMode="create")
 
   def createQuiz():
-    question = request.form['question']
-    answer = request.form['answer']
+    question = request.form.get('question')
+    answer = request.form.get('answer')
 
     if not question or not answer:
       return redirect(url_for("create", status="error"))
