@@ -6,7 +6,7 @@ from contextlib import closing
 class CreateQuiz:
   def create():
     status = request.args.get('status')
-    return render_template('create_quiz.html', status=status)
+    return render_template('create_quiz.html', status=status, currentMode="create")
 
   def createQuiz():
     question = request.form['question']
@@ -20,12 +20,12 @@ class CreateQuiz:
 
         cur = con.cursor()
         cur.execute('''
-                      create table if not exists quiz (
-                      id integer primary key autoincrement,
-                      question text,
-                      answer text
-                      )
-                    ''')
+                    CREATE TABLE IF NOT EXISTS quiz (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    question VARCHAR(256) NOT NULL,
+                    answer VARCHAR(256) NOT NULL
+            )
+        ''')
         con.commit()
 
         cur.execute("insert into quiz (question, answer) values (:question, :answer)", {'question': question, 'answer': answer})
