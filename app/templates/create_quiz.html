@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="POST" class="flex flex-col space-y-4 mb-3" action="{{ url_for('create_quiz') }}">
+  <form method="POST" class="flex flex-col space-y-4 mb-3" action="{{ url_for('createQuiz') }}">
     <div>
       <label for="question" class="cursor-pointer">問題: </label>
       <p><input type="text" name="question" id="question" class="outline-none px-2 py-1 border-2 border-black focus:border-blue-500 rounded-md w-52" required></p>
