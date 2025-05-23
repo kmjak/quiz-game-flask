@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from controller.CreateQuiz import CreateQuiz
+from controller.EditQuiz import EditQuiz
 
 app = Flask(__name__)
 
@@ -12,12 +13,16 @@ def create():
   return CreateQuiz.create()
 
 @app.route('/create_quiz', methods=['POST'])
-def create_quiz():
+def createQuiz():
   return CreateQuiz.createQuiz()
 
 @app.route('/edit')
 def edit():
-  return render_template('home.html')
+  return EditQuiz.edit()
+
+@app.route('/edit_quiz', methods=['POST'])
+def editQuiz():
+  return EditQuiz.editQuiz()
 
 @app.route('/quiz')
 def quiz():

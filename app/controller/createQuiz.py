@@ -32,5 +32,5 @@ class CreateQuiz:
         con.commit()
         return redirect(url_for("create", status="success"))
     except sqlite3.Error as e:
-        print(e)
-        return redirect(url_for("create", status="error"))
+      print(e)
+      return redirect(url_for("create", status="error"))
