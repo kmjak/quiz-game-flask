@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from controller.CreateQuiz import CreateQuiz
 from controller.EditQuiz import EditQuiz
+from controller.Quiz import Quiz
 
 app = Flask(__name__)
 
@@ -26,7 +27,11 @@ def editQuiz():
 
 @app.route('/quiz')
 def quiz():
-  return render_template('home.html')
+  return Quiz.quiz()
+
+@app.route('/quiz_answer', methods=['POST'])
+def quizAnswer():
+  return Quiz.quiz()
 
 if __name__ == '__main__':
   app.run(debug=True, port=5000)
