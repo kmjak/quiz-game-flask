@@ -31,7 +31,7 @@ def quiz():
 
 @app.route('/quiz_answer', methods=['POST'])
 def quizAnswer():
-  return Quiz.quiz()
+  return Quiz.quizAnswer()
 
 if __name__ == '__main__':
   app.run(debug=True, port=5000)

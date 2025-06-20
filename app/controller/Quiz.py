@@ -25,10 +25,20 @@ class Quiz:
       return render_template('error.html')
 
   def quizAnswer():
-    id = request.form.get('id')
+    quiz_id = request.form.get('id')
     answer = request.form.get('answer')
 
-    if not id:
+    if not quiz_id:
       return render_template('error.html',message="IDがありません")
 
-    answer_data = DBController.getQuizData(id)
+    dbController = DBController()
+    answer_data = dbController.getQuizData(quiz_id)
+
+    if not answer_data:
+      return render_template('error.html', message="クイズが存在しません")
+
+    if answer_data[0][2] == answer:
+      message = "正解です！"
+    else:
+      message = "不正解です。(正解: " + answer_data[0][2] + ")"
+    return redirect(url_for("quiz"))

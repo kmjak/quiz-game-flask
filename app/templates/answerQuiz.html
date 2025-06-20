@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  quiz
+{% endblock %}
+
+{% block page_title %}
+  クイズ出題
+{% endblock %}
+
+{% block content %}
+  <form method="POST" class="flex flex-col space-y-4 mb-3" action="{{ url_for('quizAnswer') }}">
+    <h3 class="text-xl">問題: {{ quiz }}</h3>
+    <input type="hidden" name="id" value="{{ quiz_id }}">
+    <div>
+      <label for="answer" class="cursor-pointer">答え: </label>
+      <p><input type="text" name="answer" id="answer" class="outline-none px-2 py-1 border-2 border-black focus:border-blue-500 rounded-md w-52"></p>
+    </div>
+    <p><button class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer">回答</button></p>
+  </form>
+{% endblock %}
