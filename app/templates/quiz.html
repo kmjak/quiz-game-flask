@@ -14,8 +14,36 @@
     <input type="hidden" name="id" value="{{ quiz_id }}">
     <div>
       <label for="answer" class="cursor-pointer">答え: </label>
-      <p><input type="text" name="answer" id="answer" class="outline-none px-2 py-1 border-2 border-black focus:border-blue-500 rounded-md w-52"></p>
+      <p>
+        <input
+          type="text"
+          name="answer"
+          id="answer"
+          class="outline-none px-2 py-1 border-2 border-black focus:border-blue-500 rounded-md w-52
+          {% if disabled %} bg-gray-200 text-gray-500 cursor-not-allowed {% endif %}"
+          {% if disabled %} readonly {% endif %}
+        >
+      </p>
     </div>
-    <p><button class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer">回答</button></p>
+    <p>
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer
+        {% if disabled %} bg-gray-300 cursor-not-allowed {% endif %}"
+        {% if disabled %} disabled {% endif %}>
+        解答
+      </button>
+    </p>
   </form>
+
+  <div class="flex flex-col space-y-4 mb-3">
+    <h2 class="text-3xl font-bold">結果の表示</h2>
+    {% if message %}
+      <p class="text-red-500">{{ message }}</p>
+    {% endif %}
+    <p>
+      <a href="{{ url_for('quiz') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer">
+        次の問題
+      </a>
+    </p>
+  </div>
 {% endblock %}

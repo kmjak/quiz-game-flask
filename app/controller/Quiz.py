@@ -14,11 +14,14 @@ class Quiz:
         cur.execute("select * from quiz")
         datas = cur.fetchall()
 
+        if len(datas) == 0:
+          return render_template('error.html', message="クイズが存在しません")
+
         selected_id = rd.randint(0, len(datas)-1)
         selected_quiz_id = datas[selected_id][0]
         selected_quiz = datas[selected_id][1]
 
-        return render_template('quiz.html', currentMode="quiz", quiz_id=selected_quiz_id, quiz=selected_quiz)
+        return render_template('quiz.html', currentMode="quiz", quiz_id=selected_quiz_id, quiz=selected_quiz, disabled=False)
 
     except sqlite3.Error as e:
       print(e)
@@ -41,4 +44,4 @@ class Quiz:
       message = "正解です！"
     else:
       message = "不正解です。(正解: " + answer_data[0][2] + ")"
-    return redirect(url_for("quiz"))
+    return render_template('quiz.html', currentMode="quiz", quiz_id=answer_data[0][0], quiz=answer_data[0][1], message=message, disabled=True)
